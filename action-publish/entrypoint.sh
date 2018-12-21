@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 echo "GITHUB_REF=$GITHUB_REF"
-echo "$GITHUB_REF"
+echo "${GITHUB_REF:0:17}"
 
 if [ "${GITHUB_REF:0:17}" == "refs/tags/publish" ] ;
 then
