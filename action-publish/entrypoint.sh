@@ -1,9 +1,12 @@
 #!/bin/sh -l
 
-sh --version
 echo " "
 
 echo "GITHUB_REF=$GITHUB_REF"
+
+  export DMNTCK_PUBLISH_ID=${GITHUB_REF#"refs/tags/publish"}
+  echo "DMNTCK_PUBLISH_ID=$DMNTCK_PUBLISH_ID"
+
 echo "${GITHUB_REF:0:17}"
 
 if [ "${GITHUB_REF:0:17}" == "refs/tags/publish" ] ;
