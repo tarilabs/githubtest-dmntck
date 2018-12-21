@@ -1,5 +1,8 @@
 #!/bin/sh -l
 
+sh -version
+echo " "
+
 echo "GITHUB_REF=$GITHUB_REF"
 echo "${GITHUB_REF:0:17}"
 
