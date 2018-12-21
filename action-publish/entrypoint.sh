@@ -1,19 +1,15 @@
-#!/bin/sh -l
+#!/bin/bash -eu
 
 echo " "
-
 echo "GITHUB_REF=$GITHUB_REF"
+echo " "
 
-  export DMNTCK_PUBLISH_ID=${GITHUB_REF#"refs/tags/publish"}
-  echo "DMNTCK_PUBLISH_ID=$DMNTCK_PUBLISH_ID"
-
-echo "${GITHUB_REF:0:17}"
-
-if [ "${GITHUB_REF:0:17}" == "refs/tags/publish" ] ;
-then
+if [[ "$GITHUB_REF" == "refs/tags/publish"* ]]; then
   echo OK
   export DMNTCK_PUBLISH_ID=${GITHUB_REF#"refs/tags/publish"}
   echo "DMNTCK_PUBLISH_ID=$DMNTCK_PUBLISH_ID"
+  export DMNTCK_PUBLISH_RESULTSREF="results$DMNTCK_PUBLISH_ID"
+  echo "DMNTCK_PUBLISH_RESULTSREF=$DMNTCK_PUBLISH_RESULTSREF"
   echo " "
   mvn --version
   echo " "
